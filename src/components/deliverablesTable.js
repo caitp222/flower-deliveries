@@ -27,7 +27,7 @@ const DeliverablesTable = (props) => {
         { `${ del.recipient.city }, ${ del.recipient.state }` }
       </td>
       <td className={`${del.orderStatus === "Accepted" ? "accepted" : "delivered"}`}>
-        { del.orderStatus }
+        { del.orderStatus === "Accepted" ? "Pending" : del.orderStatus }
       </td>
       <td>
         { del.orderStatus === "Accepted" ?

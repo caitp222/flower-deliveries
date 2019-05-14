@@ -10,7 +10,7 @@ const FilterMenu = (props) => {
 
   return(
     <Fragment>
-      <div className="input-group">
+      <div className="input-group filter-menu" >
         <select
           id="filterDate"
           onChange={changeHandler}
