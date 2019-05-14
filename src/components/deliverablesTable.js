@@ -25,14 +25,14 @@ const DeliverablesTable = (props) => {
       <td>
         { `${ del.recipient.city }, ${ del.recipient.state }` }
       </td>
-      <td>
+      <td className={`${del.orderStatus === "Accepted" ? "accepted" : "delivered"}`}>
         { del.orderStatus }
       </td>
     </tr>
   )
 
   return(
-    <table className="table">
+    <table className="table table-bordered">
       <thead>{ tableHeaders }</thead>
       <tbody>{ tableRows }</tbody>
     </table>

@@ -1,4 +1,12 @@
 .App {
-  margin: 1rem;
+  margin: 6rem;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.accepted {
+  color: red;
+}
+
+.delivered {
+  color: green;
 }
