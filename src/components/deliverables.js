@@ -12,6 +12,7 @@ class Deliverables extends Component {
     }
     this.changeHandler = this.changeHandler.bind(this);
     this.clearFilter = this.clearFilter.bind(this);
+    this.markDelivered = this.markDelivered.bind(this);
   };
 
   componentDidMount() {
@@ -41,6 +42,13 @@ class Deliverables extends Component {
     this.setState({ filterDate: "" })
   }
 
+  markDelivered(e) {
+    const allDeliveries = [...this.state.allDeliveries];
+    const delivery = allDeliveries.find((del) => del.id === parseInt(e.target.id) );
+    delivery.orderStatus = "Delivered";
+    this.setState({ allDeliveries });
+  }
+
   render() {
     const { allDeliveries, filteredDeliveries, filterDate } = this.state;
 
@@ -55,7 +63,10 @@ class Deliverables extends Component {
           clearFilter={this.clearFilter}
           filterDate={filterDate}
         />
-        <DeliverablesTable deliveries={filteredDeliveries} />
+        <DeliverablesTable
+          deliveries={filteredDeliveries}
+          markDelivered={this.markDelivered}
+        />
       </Fragment>
     )
   }

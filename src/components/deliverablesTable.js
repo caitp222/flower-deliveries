@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 
 const DeliverablesTable = (props) => {
-  const { deliveries } = props;
+  const { deliveries, markDelivered } = props;
 
   const headers = [
     'Delivery Date',
     'Recipient Name',
     'Recipient Address',
     'Status',
+    'Actions',
   ]
 
   const tableHeaders = <tr>{
@@ -27,6 +28,16 @@ const DeliverablesTable = (props) => {
       </td>
       <td className={`${del.orderStatus === "Accepted" ? "accepted" : "delivered"}`}>
         { del.orderStatus }
+      </td>
+      <td>
+        { del.orderStatus === "Accepted" ?
+            <button
+              id={del.id}
+              onClick={markDelivered}
+              className="btn btn-outline-secondary btn-sm"
+            >Mark Delivered</button> :
+            ""
+        }
       </td>
     </tr>
   )
