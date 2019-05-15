@@ -4,6 +4,7 @@
 ## Usage
 
     git clone https://github.com/caitp222/flower-deliveries.git
+    cd flower-deliveries
     npm install
     npm run start
 
