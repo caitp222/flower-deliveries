@@ -1,4 +1,20 @@
 .App {
-  margin: 1rem;
+  margin: 6rem;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.table-bordered {
+  margin-top: 1rem;
+}
+
+.filter-menu {
+  max-width: 50%;
+}
+
+.accepted {
+  color: red;
+}
+
+.delivered {
+  color: green;
 }
