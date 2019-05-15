@@ -1,36 +1,19 @@
-import React, { Component } from "react";
+import React, { Fragment } from "react";
 
 const DeliverablesTable = (props) => {
   const { deliveries, markDelivered } = props;
 
-  const headers = [
-    'Delivery Date',
-    'Recipient Name',
-    'Recipient Address',
-    'Status',
-    'Actions',
-  ]
-
-  const tableHeaders = <tr>{
-    headers.map((head) =>
-      <th key={head}>{head}</th>
-    )}</tr>
-
-  const tableRows = deliveries.map((del) => <tr key={del.id}>
-      <td>
-        { del.deliveryDate }
-      </td>
-      <td>
-        { del.recipient.name }
-      </td>
-      <td>
-        { `${ del.recipient.city }, ${ del.recipient.state }` }
-      </td>
-      <td className={`${del.orderStatus === "Accepted" ? "accepted" : "delivered"}`}>
-        { del.orderStatus === "Accepted" ? "Pending" : del.orderStatus }
-      </td>
-      <td>
-        { del.orderStatus === "Accepted" ?
+  const deliveryCards = deliveries.map((del) => (
+    <div key={del.id} className="card" style={{width: '18rem'}}>
+      <div className="card-body">
+        <h5 className="card-title">{del.recipient.name}</h5>
+        <h6 className="card-subtitle mb-2 text-muted">Delivery Date: { del.deliveryDate }</h6>
+        <p>{ `${del.recipient.addressLineOne}, ${ del.recipient.city }, ${ del.recipient.state } ${ del.recipient.zipCode }` }</p>
+        <p
+          className={`${del.orderStatus === "Accepted" ? "accepted" : "delivered"}`}
+        >{ del.orderStatus === "Accepted" ? "Pending" : del.orderStatus }</p>
+        {
+          del.orderStatus === "Accepted" ?
             <button
               id={del.id}
               onClick={markDelivered}
@@ -38,15 +21,16 @@ const DeliverablesTable = (props) => {
             >Mark Delivered</button> :
             ""
         }
-      </td>
-    </tr>
-  )
+      </div>
+    </div>
+  ))
 
   return(
-    <table className="table table-bordered">
-      <thead>{ tableHeaders }</thead>
-      <tbody>{ tableRows }</tbody>
-    </table>
+    <Fragment>
+      <div className="row">
+        {deliveryCards}
+      </div>
+    </Fragment>
   )
 };
 

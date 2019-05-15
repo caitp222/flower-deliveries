@@ -23,3 +23,4 @@ The app runs on ReactJS with Babel and Webpack, and CSS from Bootstrap.
 ## Assumptions
 
 * User should not be able to mark a delivery as pending after it has been delivered.
+* User will be using the app mainly on their mobile device.
